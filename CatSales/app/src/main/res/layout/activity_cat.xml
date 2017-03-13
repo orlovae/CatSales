@@ -16,7 +16,7 @@
         android:text="Васька"/>
 
     <TextView
-        android:id="@+id/bred"
+        android:id="@+id/breed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="безпородный"/>
