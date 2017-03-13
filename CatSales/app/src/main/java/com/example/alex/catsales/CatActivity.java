@@ -39,7 +39,7 @@ public class CatActivity extends Activity implements View.OnClickListener {
     }
 
     private void setTextView(){
-        
+
     }
 
     private void buttonBehavior(){
