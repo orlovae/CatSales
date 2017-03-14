@@ -2,4 +2,6 @@
     <string name="app_name">CatSales</string>
     <string name="call_owner">Call onwer</string>
     <string name="google_maps_key">AIzaSyCBcf0k1ibf_6wOvcbnGrs5ABT479UhI_Q</string>
+    <string name="not_all_permissions_granted">Please provide all required permissions for correct
+        work</string>
 </resources>
