@@ -7,10 +7,14 @@ import java.util.List;
  * Created by alex on 14.03.17.
  */
 
-public class FakeCatArray extends Cat {
-    public FakeCatArray(String uriPhoto, String name, String breed, String description,
-                        double latitude, double longtude, String telefon) {
-        super(uriPhoto, name, breed, description, latitude, longtude, telefon);
+public class FakeCatArray {
+    public FakeCatArray(){
+        createName();
+        createBred();
+        createDescription();
+        createLatitude();
+        createLongtude();
+        createTelefon();
     }
 
     private ArrayList<String> name;
@@ -20,30 +24,49 @@ public class FakeCatArray extends Cat {
     private ArrayList<Double> longtude;
     private ArrayList<String> telefon;
 
+    public ArrayList<String> getName() {
+        return name;
+    }
 
-    private ArrayList createName(){
+    public ArrayList<String> getBreed() {
+        return breed;
+    }
+
+    public ArrayList<String> getDescription() {
+        return description;
+    }
+
+    public ArrayList<Double> getLatitude() {
+        return latitude;
+    }
+
+    public ArrayList<Double> getLongtude() {
+        return longtude;
+    }
+
+    public ArrayList<String> getTelefon() {
+        return telefon;
+    }
+
+    private void createName(){
         name = new ArrayList<>();
         name.add("Васька");
         name.add("Манька");
         name.add("Барсик");
         name.add("Черныш");
         name.add("Леопольд");
-
-        return name;
     }
 
-    private ArrayList createBred(){
+    private void createBred(){
         breed = new ArrayList<>();
         breed.add("Абиссинская");
         breed.add("Бомбейская");
         breed.add("Девон рекс");
         breed.add("Йорк");
         breed.add("Корат");
-
-        return breed;
     }
 
-    private ArrayList createDescription(){
+    private void createDescription(){
         description = new ArrayList<>();
         description.add("Абисси́нская кошка — одна из самых древних пород кошек. Изображение кошек на древних египетских росписях (гробница вельможи Небамона 15-14 вв. до н. э., \"Книга мертвых\"), а так же указание их цвета в описаниях \"солнечный кот\", \"лазуритовая кошка горизонта\" наводят на мысли о том, что речь шла именно об абиссинских кошках. Поразительное сходство сохранившихся большеухих скульптур кошек с длинными лапами и вытянутым туловищем почти не оставляет в этом никаких сомнений. На расписях акцент сделан так же на хвост, приобретающий к кончику темный однотонный цвет. Древнеегипетская богиня веселья и пляски Баст (или Бастет) по описаниям имеет характер абиссинской кошки - подвижной, игривой и веселой.");
         description.add("Бомбейская кошка, несмотря на экзотическое название, никакого отношения к Индии не имеет. Она была выведена в 50-е годы ХХ столетия американскими любителями в штате Кентукки, с целью создания миниатюрной кошачьей копии чёрной пантеры. Для этой цели были скрещены бурые кошки бурманской породы с чёрными кошками породы «Американская короткошёрстная». Выведение «чистой» породы длилось 4 поколения кошек, пока не был достигнут положительный результат: была выведена «маленькая пантера». Её шерсть была чёрной и блестящей, плотной и гладкой, как сатин. Голова круглая и, как это есть и у настоящих больших хищников, пропорциональна по отношению ко всему телу. Эта новая порода была официально зарегистрирована в 1958 году. От первой вязки до признания породы прошли долгих 23 года кропотливого труда. В этом же году он был признан настоящим котом мечты.");
@@ -55,40 +78,32 @@ public class FakeCatArray extends Cat {
                 "Достоверно неизвестно, в результате скрещивания каких пород кошек появилась данная порода, есть мнение, что в скрещивании принимали участие сиамские и персидские кошки и коты. Эта порода очень слабо распространена, в основном популярностью они пользуются только у себя на родине.");
         description.add("Кора́т — порода домашней кошки. Размерами и окрасом напоминает русскую голубую кошку, но мех кошек породы Корат скорее одинарный, чем двойной. У их глаз — не изумрудно-зелёный, а оливково-зелёный цвет. Для кошек данной породы одновременно характерны требовательный и настойчивый характер и большие выразительные глаза, придающие морде невинное выражение[1]. Впрочем, зелёными глаза становятся только на 2-4-м годах жизни[2].\n" +
                 "В редких случаях у кошек этой породы отмечаются нервно-мышечные нарушения[1]. В Европе и Америке на самом деле ценятся только те представители породы Корат, которых вывезли из одноимённой провинции Таиланда. Но отличить их от голубых короткошёрстных бурманских или голубовато-серебристых восточных короткошёрстных смогут только специалисты.");
-
-        return description;
     }
 
-    private ArrayList createLatitude(){
+    private void createLatitude(){
         latitude = new ArrayList<>();
-        latitude.add(38.9071921);
-        latitude.add(38.9071925);
-        latitude.add(38.9071927);
-        latitude.add(38.9071926);
-        latitude.add(38.9071929);
-
-        return latitude;
+        latitude.add(38.9971921);
+        latitude.add(38.9171925);
+        latitude.add(38.9471927);
+        latitude.add(38.9771926);
+        latitude.add(38.9371929);
     }
 
-    private ArrayList createLongtude(){
+    private void createLongtude(){
         longtude = new ArrayList<>();
-        longtude.add(-77.0368700);
-        longtude.add(-77.0368705);
+        longtude.add(-77.0068700);
+        longtude.add(-77.0768705);
         longtude.add(-77.0368703);
-        longtude.add(-77.0368709);
-        longtude.add(-77.0368706);
-
-        return longtude;
+        longtude.add(-77.0968709);
+        longtude.add(-77.0168706);
     }
 
-    private ArrayList createTelefon(){
+    private void createTelefon(){
         telefon = new ArrayList<>();
         telefon.add("000000000");
         telefon.add("000000000");
         telefon.add("000000000");
         telefon.add("000000000");
         telefon.add("000000000");
-
-        return telefon;
     }
 }

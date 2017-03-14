@@ -7,10 +7,10 @@ package com.example.alex.catsales.model;
 public class Cat {
     private String uriPhoto, name, breed, description;
     private double latitude, longtude;
-    private int telefon;
+    private String telefon;
 
     public Cat(String uriPhoto, String name, String breed, String description,
-               double latitude, double longtude, int telefon) {
+               double latitude, double longtude, String telefon) {
         this.uriPhoto = uriPhoto;
         this.name = name;
         this.breed = breed;
@@ -20,4 +20,31 @@ public class Cat {
         this.telefon = telefon;
     }
 
+    public String getUriPhoto() {
+        return uriPhoto;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongtude() {
+        return longtude;
+    }
+
+    public String getTelefon() {
+        return telefon;
+    }
 }
