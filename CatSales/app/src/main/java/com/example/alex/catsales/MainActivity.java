@@ -24,9 +24,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+
+import static com.example.alex.catsales.model.Cat.CAT;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
     private FakeCatArray db;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private static final double WASHINGTON_LATITUDE = 38.9071923;
     private static final double WASHINGTON_LONGITUDE = -77.0368707;
+    public static final String CAT_NAME = "name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,18 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             setCurrentLocation();
             addMarker(fakeListCat);
+
+            googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    Intent intent = new Intent(MainActivity.this, CatActivity.class);
+                    String name = marker.getTitle();
+
+                    intent.putExtra(CAT_NAME, name);
+                    startActivity(intent);
+                    return false;
+                }
+            });
         }
     }
 
@@ -103,11 +119,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             fakeListCat = new ArrayList<Cat>();
         }
 
+        int ID;
         String uriPhoto, name, breed, description;
         double latitude, longtude;
         String telefon;
 
         for (int i = 0; i < db.getName().size(); i++) {
+            ID = i;
             uriPhoto = "";
             name = db.getName().get(i);
             breed = db.getBreed().get(i);
@@ -116,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             longtude = db.getLongtude().get(i);
             telefon = db.getTelefon().get(i);
 
-            Cat cat = new Cat(uriPhoto, name, breed, description, latitude, longtude, telefon);
+            Cat cat = new Cat(ID, uriPhoto, name, breed, description, latitude, longtude, telefon);
             fakeListCat.add(cat);
         }
 
