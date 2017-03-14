@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createMapView();
+
     }
 
     private void createMapView(){
@@ -53,9 +54,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             googleMap.setMyLocationEnabled(true);
 
             setCurrentLocation();
-
+            addMarker();
         }
-
     }
 
     private void setCurrentLocation(){
@@ -66,14 +66,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(target, 10F);
         googleMap.animateCamera(cameraUpdate);
 
-//        if (googleMap != null){
-//            googleMap.addMarker(new MarkerOptions()
-//                            .position(new LatLng(lat, lng))
-//                            .title("Marker")
-//                            .draggable(true)
-//            );
-//        }
 
+    }
 
+    private void addMarker(){
+        if (googleMap != null){
+            googleMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(WASHINGTON_LATITUDE + 1, WASHINGTON_LONGITUDE + 1))
+                            .title("Marker")
+                            .draggable(false)
+            );
+        }
     }
 }
