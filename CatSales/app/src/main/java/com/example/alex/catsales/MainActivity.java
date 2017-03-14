@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.alex.catsales.model.Cat;
+import com.example.alex.catsales.model.FakeCatArray;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,7 +26,11 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+    private FakeCatArray db;
+    private ArrayList<Cat> fakeListCat;
     private GoogleMap googleMap;
     LocationManager locationManager;
     Context context;
@@ -36,8 +42,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initDB();
+        fabriceCat(db);
         createMapView();
-
     }
 
     private void createMapView(){
@@ -54,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             googleMap.setMyLocationEnabled(true);
 
             setCurrentLocation();
-            addMarker();
+            addMarker(fakeListCat);
         }
     }
 
@@ -69,13 +76,50 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    private void addMarker(){
+    private void addMarker(ArrayList<Cat> fakeListCat){
         if (googleMap != null){
-            googleMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(WASHINGTON_LATITUDE + 1, WASHINGTON_LONGITUDE + 1))
-                            .title("Marker")
-                            .draggable(false)
-            );
+
+            for (int i = 0; i < fakeListCat.size(); i++) {
+                googleMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(fakeListCat.get(i).getLatitude(),
+                                fakeListCat.get(i).getLongtude()))
+                        .title(fakeListCat.get(i).getName())
+                        .draggable(false)
+                );
+            }
         }
+    }
+
+    private FakeCatArray initDB(){
+        if (db == null){
+            db = new FakeCatArray();
+            return db;
+        }
+        return db;
+    }
+
+    private ArrayList<Cat> fabriceCat(FakeCatArray db){
+        if(fakeListCat == null) {
+            fakeListCat = new ArrayList<Cat>();
+        }
+
+        String uriPhoto, name, breed, description;
+        double latitude, longtude;
+        String telefon;
+
+        for (int i = 0; i < db.getName().size(); i++) {
+            uriPhoto = "";
+            name = db.getName().get(i);
+            breed = db.getBreed().get(i);
+            description = db.getDescription().get(i);
+            latitude = db.getLatitude().get(i);
+            longtude = db.getLongtude().get(i);
+            telefon = db.getTelefon().get(i);
+
+            Cat cat = new Cat(uriPhoto, name, breed, description, latitude, longtude, telefon);
+            fakeListCat.add(cat);
+        }
+
+        return fakeListCat;
     }
 }
