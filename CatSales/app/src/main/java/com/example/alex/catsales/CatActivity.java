@@ -2,6 +2,7 @@ package com.example.alex.catsales;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -82,8 +83,18 @@ public class CatActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.call:
-                //здесь метод вызова звонка
+                call();
                 break;
+        }
+    }
+
+    private void call(){
+        //Здесь нужен try catch
+        if (cat != null){
+        String telefon = "tel:" + cat.getTelefon();
+        Intent intentCalling = new Intent(Intent.ACTION_DIAL);
+        intentCalling.setData(Uri.parse(telefon));
+        startActivity(intentCalling);
         }
     }
 
