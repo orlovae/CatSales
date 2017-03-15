@@ -2,10 +2,8 @@ package com.example.alex.catsales.model;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by alex on 14.03.17.
@@ -14,6 +12,7 @@ import java.util.List;
 public class FakeCatArray extends Activity {
     private final String DRAWABLE = "drawable";
     Context context;
+
     public FakeCatArray(Context context){
         this.context = context;
         createPhoto();
