@@ -63,6 +63,7 @@ public class CatActivity extends Activity implements View.OnClickListener {
 
     private void setImageView(){
         Log.i(TAG, "Start setImageView");
+        ivPhoto.setImageResource(cat.getPhoto());
 
     }
 

@@ -1,5 +1,9 @@
 package com.example.alex.catsales.model;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,8 +11,12 @@ import java.util.List;
  * Created by alex on 14.03.17.
  */
 
-public class FakeCatArray {
-    public FakeCatArray(){
+public class FakeCatArray extends Activity {
+    private final String DRAWABLE = "drawable";
+    Context context;
+    public FakeCatArray(Context context){
+        this.context = context;
+        createPhoto();
         createName();
         createBred();
         createDescription();
@@ -17,12 +25,17 @@ public class FakeCatArray {
         createTelefon();
     }
 
+    private ArrayList<Integer> photo;
     private ArrayList<String> name;
     private ArrayList<String> breed;
     private ArrayList<String> description;
     private ArrayList<Double> latitude;
     private ArrayList<Double> longtude;
     private ArrayList<String> telefon;
+
+    public ArrayList<Integer> getPhoto(){
+        return photo;
+    }
 
     public ArrayList<String> getName() {
         return name;
@@ -46,6 +59,21 @@ public class FakeCatArray {
 
     public ArrayList<String> getTelefon() {
         return telefon;
+    }
+
+    private void createPhoto(){
+        photo = new ArrayList<>();
+        ArrayList<String> breedName = new ArrayList<>();
+        breedName.add("abissin");
+        breedName.add("bombey");
+        breedName.add("devon_rex");
+        breedName.add("york");
+        breedName.add("korat");
+        for (String item:breedName
+             ) {
+            photo.add(context.getResources().getIdentifier(item,
+                    DRAWABLE, context.getPackageName()));
+        }
     }
 
     private void createName(){
@@ -77,7 +105,7 @@ public class FakeCatArray {
                 "Среди котят её длинношёрстной кошки появился котенок (кошка) с шоколадным окрасом. Позже у этой шоколадной кошки появились свои котята, среди которых оказался снова один шоколадный, но уже кот. Затем Джанет свела их, и постепенно вывела новую породу.\n" +
                 "Достоверно неизвестно, в результате скрещивания каких пород кошек появилась данная порода, есть мнение, что в скрещивании принимали участие сиамские и персидские кошки и коты. Эта порода очень слабо распространена, в основном популярностью они пользуются только у себя на родине.");
         description.add("Кора́т — порода домашней кошки. Размерами и окрасом напоминает русскую голубую кошку, но мех кошек породы Корат скорее одинарный, чем двойной. У их глаз — не изумрудно-зелёный, а оливково-зелёный цвет. Для кошек данной породы одновременно характерны требовательный и настойчивый характер и большие выразительные глаза, придающие морде невинное выражение[1]. Впрочем, зелёными глаза становятся только на 2-4-м годах жизни[2].\n" +
-                "В редких случаях у кошек этой породы отмечаются нервно-мышечные нарушения[1]. В Европе и Америке на самом деле ценятся только те представители породы Корат, которых вывезли из одноимённой провинции Таиланда. Но отличить их от голубых короткошёрстных бурманских или голубовато-серебристых восточных короткошёрстных смогут только специалисты.");
+                "В редких случаях у кошек этой породы отмечаются нервно-мышечные нарушения. В Европе и Америке на самом деле ценятся только те представители породы Корат, которых вывезли из одноимённой провинции Таиланда. Но отличить их от голубых короткошёрстных бурманских или голубовато-серебристых восточных короткошёрстных смогут только специалисты.");
     }
 
     private void createLatitude(){
