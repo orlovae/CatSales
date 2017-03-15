@@ -23,7 +23,7 @@ import static com.example.alex.catsales.MainActivity.CAT_NAME;
 
 public class CatActivity extends Activity implements View.OnClickListener {
     private static final int CHANGE_DATE = 1;
-    private static final String TAG = "MyApp";
+    public static final String TAG = "MyApp";
 
     private Cat cat = null;
     private String catName;
