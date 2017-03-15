@@ -2,6 +2,7 @@ package com.example.alex.catsales;
 
 import android.app.Application;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -25,6 +26,7 @@ public class MyApp extends Application {
     private ArrayList<Cat> fakeListCat;
     private DBHelper dbHelper;
     private SQLiteDatabase db;
+    final Context context = this;
 
     public ArrayList<Cat> getFakeListCat() {
         return fakeListCat;
@@ -50,20 +52,20 @@ public class MyApp extends Application {
     private void initFakeCatArray(){
         Log.i(TAG, "Start initDB");
         if (fakeCatArray == null){
-            fakeCatArray = new FakeCatArray();
+            fakeCatArray = new FakeCatArray(context);
         }
     }
     public void initFakeCatTable(){
         db = dbHelper.getWritableDatabase();
 
-        int ID;
-        String uriPhoto, name, breed, description;
+        int ID, photo;
+        String name, breed, description;
         double latitude, longtude;
         String telefon;
 
         for (int i = 0; i < fakeCatArray.getName().size(); i++) {
             ID = i;
-            uriPhoto = "";
+            photo = fakeCatArray.getPhoto().get(i);
             name = fakeCatArray.getName().get(i);
             breed = fakeCatArray.getBreed().get(i);
             description = fakeCatArray.getDescription().get(i);
@@ -73,7 +75,7 @@ public class MyApp extends Application {
 
             ContentValues cV = new ContentValues();
             cV.put(FakeCatTable.COLUMN_ID, i);
-            cV.put(FakeCatTable.COLUMN_URI_PHOTO, uriPhoto);
+            cV.put(FakeCatTable.COLUMN_PHOTO, photo);
             cV.put(FakeCatTable.COLUMN_NAME, name);
             cV.put(FakeCatTable.COLUMN_BREED, breed);
             cV.put(FakeCatTable.COLUMN_DESCRIPTION, description);

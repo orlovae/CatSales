@@ -1,5 +1,9 @@
 package com.example.alex.catsales.model;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,8 +11,12 @@ import java.util.List;
  * Created by alex on 14.03.17.
  */
 
-public class FakeCatArray {
-    public FakeCatArray(){
+public class FakeCatArray extends Activity {
+    private final String DRAWABLE = "drawable";
+    Context context;
+    public FakeCatArray(Context context){
+        this.context = context;
+        createPhoto();
         createName();
         createBred();
         createDescription();
@@ -17,12 +25,17 @@ public class FakeCatArray {
         createTelefon();
     }
 
+    private ArrayList<Integer> photo;
     private ArrayList<String> name;
     private ArrayList<String> breed;
     private ArrayList<String> description;
     private ArrayList<Double> latitude;
     private ArrayList<Double> longtude;
     private ArrayList<String> telefon;
+
+    public ArrayList<Integer> getPhoto(){
+        return photo;
+    }
 
     public ArrayList<String> getName() {
         return name;
@@ -46,6 +59,21 @@ public class FakeCatArray {
 
     public ArrayList<String> getTelefon() {
         return telefon;
+    }
+
+    private void createPhoto(){
+        photo = new ArrayList<>();
+        ArrayList<String> breedName = new ArrayList<>();
+        breedName.add("abissin");
+        breedName.add("bombey");
+        breedName.add("devon_rex");
+        breedName.add("york");
+        breedName.add("korat");
+        for (String item:breedName
+             ) {
+            photo.add(context.getResources().getIdentifier(item,
+                    DRAWABLE, context.getPackageName()));
+        }
     }
 
     private void createName(){
