@@ -5,16 +5,13 @@ package com.example.alex.catsales.model;
  */
 
 public class Cat {
-    private int ID, photo;
+    private int photo;
     private String name, breed, description;
     private double latitude, longtude;
     private String telefon;
 
-    public final static String CAT = "com.example.alex.CatSales.CAT";
-
-    public Cat(int ID, int photo, String name, String breed, String description,
+    public Cat(int photo, String name, String breed, String description,
                double latitude, double longtude, String telefon) {
-        this.ID = ID;
         this.photo = photo;
         this.name = name;
         this.breed = breed;
@@ -22,10 +19,6 @@ public class Cat {
         this.latitude = latitude;
         this.longtude = longtude;
         this.telefon = telefon;
-    }
-
-    public int getID() {
-        return ID;
     }
 
     public int getPhoto() {

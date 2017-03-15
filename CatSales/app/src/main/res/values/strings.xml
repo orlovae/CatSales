@@ -4,4 +4,6 @@
     <string name="google_maps_key">AIzaSyCBcf0k1ibf_6wOvcbnGrs5ABT479UhI_Q</string>
     <string name="not_all_permissions_granted">Please provide all required permissions for correct
         work</string>
+    <string name="name">"Кличка - "</string>
+    <string name="breed">"Порода - "</string>
 </resources>
