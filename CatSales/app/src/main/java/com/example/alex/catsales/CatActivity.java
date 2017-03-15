@@ -27,7 +27,6 @@ public class CatActivity extends Activity implements View.OnClickListener {
 
     private Cat cat = null;
     private String catName;
-    private FakeCatArray db;
     private ArrayList<Cat> fakeListCat;
 
     private ImageView ivPhoto;
@@ -40,7 +39,7 @@ public class CatActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cat);
         initIntent();
-        fabriceCat(initDB());
+        initFabricCat();
         setActualCat(catName);
         initView();
         setImageView();
@@ -108,40 +107,12 @@ public class CatActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private FakeCatArray initDB(){
-        Log.i(TAG, "Start initDB");
-        if (db == null){
-            db = new FakeCatArray();
-            return db;
-        }
-        return db;
-    }
-
-    private ArrayList<Cat> fabriceCat(FakeCatArray db){
-        Log.i(TAG, "Start fabriceCat");
+    private void initFabricCat(){
         if(fakeListCat == null) {
             fakeListCat = new ArrayList<Cat>();
         }
 
-        int ID;
-        String uriPhoto, name, breed, description;
-        double latitude, longtude;
-        String telefon;
-
-        for (int i = 0; i < db.getName().size(); i++) {
-            ID = i;
-            uriPhoto = "";
-            name = db.getName().get(i);
-            breed = db.getBreed().get(i);
-            description = db.getDescription().get(i);
-            latitude = db.getLatitude().get(i);
-            longtude = db.getLongtude().get(i);
-            telefon = db.getTelefon().get(i);
-
-            Cat cat = new Cat(ID, uriPhoto, name, breed, description, latitude, longtude, telefon);
-            fakeListCat.add(cat);
-        }
-
-        return fakeListCat;
+        MyApp app = ((MyApp)getApplicationContext());
+        fakeListCat = app.getFakeListCat();
     }
 }
