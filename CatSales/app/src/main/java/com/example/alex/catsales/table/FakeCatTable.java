@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class FakeCatTable {
     public static final String TABLE_NAME = "FakeCats";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_URI_PHOTO = "uriPhoto";
+    public static final String COLUMN_PHOTO = "photo";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_BREED = "breed";
     public static final String COLUMN_DESCRIPTION = "description";
@@ -25,7 +25,7 @@ public class FakeCatTable {
     public static void createTable(SQLiteDatabase database){
         database.execSQL("CREATE TABLE " + TABLE_NAME + " ("
                 + COLUMN_ID + " integer primary key autoincrement,"
-                + COLUMN_URI_PHOTO + " text,"
+                + COLUMN_PHOTO + " integer,"
                 + COLUMN_NAME + " text,"
                 + COLUMN_BREED + " text,"
                 + COLUMN_DESCRIPTION + " text,"
@@ -42,7 +42,7 @@ public class FakeCatTable {
             fakeListArray = new ArrayList<>();
 
             int idColIndex = cursor.getColumnIndex(COLUMN_ID);
-            int uriPhotoColIndex = cursor.getColumnIndex(COLUMN_URI_PHOTO);
+            int photoColIndex = cursor.getColumnIndex(COLUMN_PHOTO);
             int nameColIndex = cursor.getColumnIndex(COLUMN_NAME);
             int breedColIndex = cursor.getColumnIndex(COLUMN_BREED);
             int descriptionColIndex = cursor.getColumnIndex(COLUMN_DESCRIPTION);
@@ -52,7 +52,7 @@ public class FakeCatTable {
 
             do {
                 int id = cursor.getInt(idColIndex);
-                String uriPhoto = cursor.getString(uriPhotoColIndex);
+                int photo = cursor.getInt(photoColIndex);
                 String name = cursor.getString(nameColIndex);
                 String breed = cursor.getString(breedColIndex);
                 String description = cursor.getString(descriptionColIndex);
@@ -60,7 +60,7 @@ public class FakeCatTable {
                 double longtude = cursor.getDouble(longtudeColIndex);
                 String telefon = cursor.getString(telefonColIndex);
 
-                Cat cat = new Cat(id, uriPhoto, name, breed, description,
+                Cat cat = new Cat(id, photo, name, breed, description,
                         latitude, longtude, telefon);
                 fakeListArray.add(cat);
             } while (cursor.moveToNext());
