@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class FakeCatTable {
     public static final String TABLE_NAME = "FakeCats";
-    public static final String COLUMN_ID = "_id";
+    private static final String COLUMN_ID = "_id";
     public static final String COLUMN_PHOTO = "photo";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_BREED = "breed";
@@ -41,7 +41,6 @@ public class FakeCatTable {
 
             fakeListArray = new ArrayList<>();
 
-            int idColIndex = cursor.getColumnIndex(COLUMN_ID);
             int photoColIndex = cursor.getColumnIndex(COLUMN_PHOTO);
             int nameColIndex = cursor.getColumnIndex(COLUMN_NAME);
             int breedColIndex = cursor.getColumnIndex(COLUMN_BREED);
@@ -51,7 +50,6 @@ public class FakeCatTable {
             int telefonColIndex = cursor.getColumnIndex(COLUMN_TELEFON);
 
             do {
-                int id = cursor.getInt(idColIndex);
                 int photo = cursor.getInt(photoColIndex);
                 String name = cursor.getString(nameColIndex);
                 String breed = cursor.getString(breedColIndex);
@@ -60,7 +58,7 @@ public class FakeCatTable {
                 double longtude = cursor.getDouble(longtudeColIndex);
                 String telefon = cursor.getString(telefonColIndex);
 
-                Cat cat = new Cat(id, photo, name, breed, description,
+                Cat cat = new Cat(photo, name, breed, description,
                         latitude, longtude, telefon);
                 fakeListArray.add(cat);
             } while (cursor.moveToNext());
