@@ -13,6 +13,9 @@
 3. Intent
 
 Вот что получилось:
+   
+   
 <img src="https://img-fotki.yandex.ru/get/225650/705498.0/0_1437ad_9a0aa296_L.png" width="281" height="500" border="0" />
+<img src="https://img-fotki.yandex.ru/get/53145/705498.0/0_1437ae_7bf310cb_L.png" width="281" height="500" border="0" />
 <img src="https://img-fotki.yandex.ru/get/362774/705498.0/0_1437af_dd0b3fb_L.png" width="281" height="500" border="0" />
 <img src="https://img-fotki.yandex.ru/get/9757/705498.0/0_1437b0_aa8339d5_L.png" width="281" height="500" border="0" />
